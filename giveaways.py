@@ -8,8 +8,8 @@ from lxml import html
 def login(session, username, password):
 	page = session.get('https://www.goodreads.com/')
 	tree = html.fromstring(page.content)
-	form = tree.xpath('//div[@id="signInForm"]')[0]
-	authenticity_token = form.xpath('.//input[@name="authenticity_token"]/@value')[0]
+	form = tree.xpath('//div[@id="signIn"]')[0]
+	authenticity_token = form.xpath('.//input[@name="authenticity_token"]/@value')[0] #Name needs updating for new goodreads login
 	n = form.xpath('.//input[@name="n"]/@value')[0]
 
 	payload = {
